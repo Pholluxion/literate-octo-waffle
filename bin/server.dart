@@ -7,6 +7,7 @@ import 'package:dart_frog/dart_frog.dart';
 
 
 import '../routes/ws.dart' as ws;
+import '../routes/label.dart' as label;
 
 import '../routes/_middleware.dart' as middleware;
 
@@ -33,7 +34,7 @@ Handler buildRootHandler() {
 Handler buildHandler() {
   final pipeline = const Pipeline();
   final router = Router()
-    ..all('/ws', (context) => ws.onRequest(context,));
+    ..all('/ws', (context) => ws.onRequest(context,))..all('/label', (context) => label.onRequest(context,));
   return pipeline.addHandler(router);
 }
 
